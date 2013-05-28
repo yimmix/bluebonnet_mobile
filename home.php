@@ -1,4 +1,4 @@
-<?	
+<?php	
 	include_once("header.php");
 ?>
 <div style="min-width:320px; max-width:98%; margin:0px auto;">
