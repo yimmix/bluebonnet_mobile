@@ -1,0 +1,83 @@
+<div class="clear margin-top-20"> </div>
+  	
+ <!--- footer part --->
+ <div style="min-width:320px; max-width:100%; margin:0px auto;">
+ 
+    <div style="border:0px solid #fff;width:100%;text-align:center; margin: 0 auto 5px auto; "><a href="http://www.bluebonnetnutrition.com" style="text-decoration:none;border-radius:5px;-moz-border-radius:5px;
+	-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;	-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;color:#fff;font-weight:bold;padding:4px 10px 4px 10px;background-color:#80448c;">VIEW FULL WEBSITE</a></b> </div>
+	<div class="footer">
+
+
+    <div style="text-transform:uppercase;width:51%;float:left;margin:0; padding:4px 0px 0px 6px; color:#FFFFFF; font-size:12px;font-weight:bold; ">bluebonnet &copy; 2012 </div>
+	
+	<div style="text-transform:uppercase;width:45%;float:right;text-align:right;padding:4px 6px 0px 0px;color:#FFFFFF; font-size:12px;font-weight:bold;"><a href="http://digitalearthnetwork.com/" style="text-decoration:none;color:#FFFFFF !important;">powered by den</a></div>
+    </div>
+    </div>
+	<!--- footer part --->
+</div>
+<? if(!empty($banners_img)) { ?> 
+<!--  script for banner management -->
+<script type="text/javascript">
+	// alert(1);
+	// var imgsDiv = document.getElementById("bannerContainer");
+	// var imgs = imgsDiv.getElementsByTagName('img');
+	// alert("ss:"+imgs[0].src);
+	
+	//var img_arr = ["img/11.jpg","img/dummy.jpg","img/purple22.jpg","img/dummy2.jpg"];
+	var img_arr = <?=$result_img_arr?>;
+	function startBanner() {
+		
+		var imgsDiv = document.getElementById("bannerContainer");
+		var imgs = imgsDiv.getElementsByTagName('img');
+		//alert("footer:"+imgs[0].src);
+		var hrefs = imgsDiv.getElementsByTagName('a');
+		var next  = 0;
+		for (i=0;i<img_arr.length;i++)
+		{
+			//alert(1);
+			//alert("inside-loop:"+img_arr[i]);
+			//alert("main_image:"+imgs[0].src);
+			if(imgs[0].src.indexOf(img_arr[i]) != -1 ){
+				if(i == (img_arr.length-1)){
+				  next = 0;
+				  var j = i-1;
+				  
+				  document.getElementById('icon'+i).innerHTML = '<img src= "img/nav.gif" alt="" class="banner_buttons" />';
+				  document.getElementById('icon'+next).innerHTML = '<img src= "img/nav_active.gif" alt="" class="banner_buttons" />';
+				}else {
+					next = i+1; 
+					if(i == 0) {
+							var k =i+1;
+							document.getElementById('icon'+i).innerHTML = '<img src= "img/nav.gif" alt="" class="banner_buttons" />';
+							document.getElementById('icon'+k).innerHTML = '<img src= "img/nav_active.gif" alt=""  class="banner_buttons" />';
+					
+					}else {
+						var j = i+1;
+						document.getElementById('icon'+i).innerHTML = '<img src= "img/nav.gif" alt="" class="banner_buttons" />';	
+						document.getElementById('icon'+j).innerHTML = '<img src= "img/nav_active.gif" alt="" class="banner_buttons" />';
+					}	
+				}
+				
+				imgs[0].src = img_arr[next];
+				hrefs[0].href = href_arr[next];
+				
+				start = start +i;
+				if(start == last) {
+				  start  = 0;
+				}
+				break;
+			}else {
+				continue;	
+			}
+		}
+		setTimeout("startBanner()",<?=$banner_rotator_time?>);
+	}
+	setTimeout("startBanner()",<?=$banner_rotator_time?>);
+	
+</script>	
+
+<? } ?>
+
+<!--  script for banner management end here -->
+</body>
+</html>

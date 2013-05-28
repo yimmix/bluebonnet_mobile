@@ -1,0 +1,38 @@
+RewriteEngine on
+
+
+AddDefaultCharset utf-8
+#DirectoryIndex home.php
+DirectoryIndex index.php
+
+Options -Indexes 
+
+RewriteRule ^banner-management/?$  			 banner-management/index.php 
+RewriteRule ^about/([a-zA-Z_]+)/?$  			 about_us.php?page_name=$1 [nc,l]
+RewriteRule  ^([a-z_]+)/?$  					 $1.php [nc,l]
+RewriteRule  ^store_locator_result/([0-9]+)/?$     		 store_locator_result.php?page=$1 [nc,l]
+#RewriteRule ^products/?$  						 products.php
+#RewriteRule ^home/?$  							 home.php
+RewriteRule  ^products/([0-9]+)/?$     		 	 products.php?page=$1 [nc,l]
+RewriteRule  ^products/([a-z_]+)/?$     		 products.php?ptype=$1 
+RewriteRule  ^products/([a-z_]+)\?(.*)$     		 products.php?ptype=$1\?$2 [nc,l]
+
+RewriteRule  ^product/([a-z_]+)/([a-z_0-9]+)/?$     		 product.php?cat=$1&sub_cat=$2 [nc,l]
+
+RewriteRule  ^product/([a-z_]+)/([a-z_0-9]+)/([0-9]+)$     		 product.php?cat=$1&sub_cat=$2&page=$3 [nc,l]
+
+RewriteRule  ^about/([a-z_]+)/?$     		 	$1.php [nc,l]
+
+RewriteRule  ^products/([a-z_]+)/([0-9]+)/?$ 	 products.php?ptype=$1&page=$2 [nc,l]
+
+RewriteRule ^product/([0-9]+)/(.+)$ 			 product_details.php?pid=$1&pname=$2 [nc,l] 
+
+RewriteRule ^suppliment_facts/([0-9]+)/?$	     supplement_facts.php?pid=$1 [nc,l]
+
+RewriteRule ^category_desc\?cat_id\=([0-9]+)/?$			 category_desc.php?cat_id=$1 [nc,l] 
+RewriteRule ^category_desc\?cat_id\=([0-9]+)&page\=([0-9]+)\?$		 category_desc.php?cat_id=$1&page=$2 [nc,l] 
+RewriteRule ^not_found/?$ 						not_found.php [nc,l]
+
+
+ErrorDocument 404 								/bluebonnet/not_found
+

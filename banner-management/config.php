@@ -1,0 +1,8 @@
+<?
+	define(BANNER,"banner.xml");	
+	
+
+
+
+
+?>
